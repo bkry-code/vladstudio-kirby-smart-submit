@@ -1,0 +1,7 @@
+Title: Smart Submit Example
+
+----
+
+Text: 
+
+This is an example page for Smart Submit.
