@@ -14,4 +14,4 @@ if (!get('text'))            	{ die('{"error":"Message is required."}'); }
 // .....
 
 
-die('{"success":"Form has been submitted! Woo-hoo!"}');
+die('{"success":"Form has been submitted! Woo-hoo! Here is what you submitted: '.addslashes(serialize(get())).'"}');

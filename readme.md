@@ -23,21 +23,25 @@ Example:
 * On your page (f.e. Contact Us), create a form. As fas as I understand Kirby, you can do is in either snippet or template. The following attributes are required for the form:
 
 	* `id="smart-submit"`
-	* `action="<?= url('smart-submit') ?>"`
-	
-So:
+	* `action="<?= url('smart-submit') ?>?handler=do-something"`
 
-	<form id="smart-submit" class="YOUR_CLASS_FOR_FORMS" action="<?= url('smart-submit') ?>">
+where `do-something` is the name of PHP handler script (described below), without `.php`.
+
+Example:
+
+	<form id="smart-submit" class="YOUR_CLASS_FOR_FORMS" action="<?= url('smart-submit') ?>?handler=do-something">
 	…
 	</form>
 
 ****
 
-And now, the most interesting part! For every smart-submit form, you will need to create PHP handler. Two simple rules:
+And now, the most interesting part! For every smart-submit form, you will need to create PHP handler. Simple rules:
 
-* put it into `content/smart-submit/`
-* name it according to the URL of the page with the form. F.e. if your form is at `http://mysite.com/about-me/contact/`, you should have `contact.php`;
-* inside this script, do whatever you want! Validate input, send emails, hack server, conquer the world. However, when you're done, you must output valid JSON:
+* put it into `content/smart-submit/`.
+* Name it according to the "handler" parameter you provided in form "action". In the example above, it would be `do-something.php`. 
+* If you skip "handler" in the form (`action="<?= url('smart-submit') ?>"`), the plugin will search for handler PHP script by the last folder name in your page URL. F.e. if your form is at `http://mysite.com/about-me/contact/`, you should have `contact.php`.
+* Inside this script, do whatever you want! Validate input, send emails, hack server, conquer the world. However, when you're done, you must output valid JSON:
+
 	* `{"success":"Your success message"}`
 	* `{"error":"Your error message"}`
 	* `{"redirect":"/your/redirect/url"}`

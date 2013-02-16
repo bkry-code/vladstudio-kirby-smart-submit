@@ -1,7 +1,7 @@
 <?php 
 
-	// detect handler from http referer
-	$handler_name = a::last( array_filter( explode('/', server::get('http_referer'))));
+	// detect handler from 1) query parameter ("?handler="), or fallback to 2) http referer
+	$handler_name = get('handler') ?: a::last( array_filter( explode('/', server::get('http_referer'))));
 
 	$handler_path = c::get('root.content').'/smart-submit/'.$handler_name.'.php';
 

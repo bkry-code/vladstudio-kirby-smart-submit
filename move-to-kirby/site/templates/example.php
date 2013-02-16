@@ -14,7 +14,7 @@
 
 	<?php echo kirbytext($page->text()) ?>
 
-	<form id="smart-submit" class="styled-form" action="<?= url('smart-submit') ?>">
+	<form id="smart-submit" class="styled-form" action="<?= url('smart-submit') ?>?handler=do-something">
 
 		<label for="name">Your name:</label>
 		<input type="text" class="text required" name="name" id="name">
